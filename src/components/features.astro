@@ -1,69 +1,159 @@
 ---
 // @ts-ignore
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import landingCustomDomain from "@/assets/landing_custom_domain.png";
+import landingResponsive from "@/assets/publish_as_responsive_landing.png";
+import landingCustomFavicon from "@/assets/custom_favicon_landing.png"; 
+import landingPasswordProtection from "@/assets/password_protection_landing.png";
+import landingProjectShowcase from "@/assets/multiple_project_landing.png";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
-    description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
+    title: "Custom Domain",
+    description: "Connect an existing custom domain to make your site truly yours. We provide guidance and support",
     icon: "bx:bxs-briefcase",
+    image: {
+      src: landingCustomDomain,
+      alt: "Custom Domain Feature",
+    },
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Publish as Responsive Design",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+      "With Figma's new responsive prototype capability, your designs will adapt to different screen sizes.",
     icon: "bx:bxs-window-alt",
+    image: {
+      src: landingResponsive,
+      alt: "Publish as Responsive Design Feature",
+    },
   },
   {
-    title: "On-Demand Components",
+    title: "Custom Favicon",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
+      "Brand your site with a unique favicon that appears in browser tabs and bookmarks.",
     icon: "bx:bxs-data",
+    image: {
+      src: landingCustomFavicon,
+      alt: "Custom Favicon Feature",
+    },
   },
   {
-    title: "Broad Integration",
+    title: "Password Protection",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
+      "Secure your confidential work or NDA projects with password protection.",
     icon: "bx:bxs-bot",
+    image: {
+      src: landingPasswordProtection,
+      alt: "Password Protection Feature",
+    }
   },
   {
-    title: "SEO Enabled",
+    title: "Project Showcase",
     description:
       "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
     icon: "bx:bxs-file-find",
+    image: {
+      src: landingProjectShowcase,
+      alt: "Project Showcase Feature",
+    }
   },
   {
-    title: "Community",
+    title: "Ready to Get Started?",
     description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
+      "Transform your Figma designs into a live website in minutes. No coding required.",
+    icon: "bx:bxs-rocket",
+    ctaButton: {
+      text: "Create Your Site",
+      href: "/get-started",
+    }
   },
 ];
 ---
 
 <div class="mt-16 md:mt-0">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+    Make it yours!
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+    Customize and publish your Figmafolio page
   </p>
 </div>
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
-  {
-    features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
-        </div>
+  {features.map((item) => (
+    <div class={`flex flex-col gap-4 ${
+      item.ctaButton ? 'bg-gradient-to-b from-slate-50 to-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow' : ''
+    }`}>
+      <h3 class={`font-semibold w-full ${
+        item.ctaButton ? 'text-2xl text-center text-slate-900' : 'text-lg'
+      }`}>{item.title}</h3>
+      <div class={`flex ${item.ctaButton ? 'flex-col items-center' : 'gap-4 items-start'}`}>
+        {item.ctaButton ? (
+          <div class="w-full space-y-6">
+            <p class="text-slate-600 text-center">{item.description}</p>
+            <div class="text-center">
+              <a href={item.ctaButton.href} 
+                 class="inline-flex items-center gap-2 bg-black hover:bg-slate-800 text-white px-8 py-3 rounded-xl text-lg font-medium transition-all duration-200 hover:translate-y-[-2px] hover:shadow-lg">
+                {item.ctaButton.text}
+                <Icon name={item.icon} class="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        ) : item.image ? (
+          <Image
+            src={item.image.src}
+            alt={item.image.alt}
+            width={200}
+            height={200}
+            class="rounded-lg"
+          />
+        ) : (
+          <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+            <Icon class="text-white" name={item.icon} />
+          </div>
+        )}
+        {!item.ctaButton && (
+          <div>
+            <p class="text-slate-500 mt-2 leading-relaxed text-sm">{item.description}</p>
+          </div>
+        )}
       </div>
-    ))
-  }
+    </div>
+  ))}
+</div>
+
+<div class="mt-24">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    From Figma to live website in 3 simple steps
+  </h2>
+  
+  <div class="grid md:grid-cols-3 mt-16 gap-10">
+    <div class="flex flex-col gap-4">
+      <span class="text-4xl font-bold text-slate-800">1</span>
+      <h3 class="text-xl font-bold">Design in Figma</h3>
+      <p class="text-slate-500 text-sm">
+        Skip learning other tools or coding. Bring your entire website or portfolio to life right in Figma. 
+        Leverage its features like transitions, GIFs and video to make it interactive and engaging.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <span class="text-4xl font-bold text-slate-800">2</span>
+      <h3 class="text-xl font-bold">Simple Setup</h3>
+      <p class="text-slate-500 text-sm">
+        Set up and preview your Figma prototype in our web interface. Just paste the prototype URL 
+        and customize settings. Preview the result before going live.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-4">
+      <span class="text-4xl font-bold text-slate-800">3</span>
+      <h3 class="text-xl font-bold">Go Live!</h3>
+      <p class="text-slate-500 text-sm">
+        Publish your site instantly to each viewing page and share it with clients. 
+        You can use your personalized domain name.
+      </p>
+    </div>
+  </div>
 </div>

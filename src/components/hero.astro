@@ -1,42 +1,44 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "@/assets/hero.png";
 import Link from "@/components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
+<script type="text/javascript" src="https://sf16-website-login.neutral.ttwstatic.com/obj/tiktok_web_login_static/tiktok/falcon/embed/embed_lib_v1.0.13.js"></script>
+
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
+  <div class="py-6 md:order-1 hidden md:block w-full max-w-[396px]">
+    <blockquote 
+      class="tiktok-embed" 
+      cite="https://www.tiktok.com/@janustiu/video/7342645742324010245" 
+      data-video-id="7342645742324010245" 
+      style="max-width: 100%; border-radius: 12px;" 
+      id="v85260644882706290">
+      <iframe 
+        name="__tt_embed__v85260644882706290" 
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-scripts allow-top-navigation allow-same-origin" 
+        src="https://www.tiktok.com/embed/v2/7342645742324010245?lang=en-US&loop=1" 
+        style="width: 100%; height: 472px; display: block; visibility: unset;">
+      </iframe>
+    </blockquote>
   </div>
   <div>
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      Figma file to live site in a few clicks
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      You can publish an interactive website or portfolio directly from your Figma, no coding necessary.
+  
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
-        href="#"
         href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
         target="_blank"
         class="flex gap-1 items-center justify-center"
         rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-        Download for Free
+        <Icon class="text-white w-5 h-5" name="bx:rocket" />
+        Get Started For Free
       </Link>
       <Link
         size="lg"
@@ -45,8 +47,8 @@ import { Icon } from "astro-icon/components";
         href="https://github.com/surjithctly/astroship"
         class="flex gap-1 items-center justify-center"
         target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-        GitHub Repo
+        <Icon class="text-[#3d8f60] w-4 h-4" name="bx:help-circle" />
+        How it works
       </Link>
     </div>
   </div>
