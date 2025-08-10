@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/((?!features|how-it-works|blog|pricing|contact).*)",
+      "destination": "https://app.figmafolio.com/$1",
+      "permanent": true
+    }
+  ]
+}
